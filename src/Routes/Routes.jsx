@@ -5,6 +5,8 @@ import LogIn from "../Pages/Login/LogIn";
 import Signup from "../components/Signup/Signup";
 import Error from "../Pages/error/Error";
 import AddBook from "../Pages/AddBook/AddBook";
+import AllBooks from "../Pages/AllBooks/AllBooks";
+import UpdateBook from "../components/UpdateBook/UpdateBook";
 
 
 const router = createBrowserRouter([
@@ -29,6 +31,16 @@ const router = createBrowserRouter([
         {
           path: '/addBook',
           element: <AddBook></AddBook>
+        },
+        {
+          path: '/allBooks',
+          element: <AllBooks></AllBooks>,
+          loader: () => fetch('http://localhost:5000/userBook')
+        },
+        {
+          path: '/updateBook/:id',
+          element: <UpdateBook></UpdateBook>,
+          loader: ({params}) => fetch(`http://localhost:5000/userBook/${params.id}`)
         }
         
       ]

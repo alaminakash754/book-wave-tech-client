@@ -40,8 +40,9 @@ const AddBook = () => {
     }
 
     return (
-        <div className="bg-blue-100 mb-5 mt-8">
-            <h1 className="text-3xl text-center text-blue-500 font-bold mb-3 underline italic">Added New Book</h1>
+        <div className="bg-blue-100 mb-5 mt-8 text-center">
+            <h1 className="text-3xl text-center text-blue-500 font-bold my-2 italic">Added New Book</h1>
+            <progress className="progress w-56 text-blue-500 bg-blue-500 mt-4 mb-5"></progress>
             <form onSubmit={handleAddItem}>
                 {/* from type and brand row */}
                 <div className="w-3/4 mx-auto space-y-3 mb-3 mt-5">
