@@ -1,0 +1,43 @@
+.dark-theme {
+    --main-heading: #5f99be;
+    --para-clr: #fff;
+    --btn-bg-color: #5f99be;
+    --btn-text-clr: #fff;
+    --bg-clr: #111b20;
+}
+
+.light-theme {
+    --main-heading: #5f99be;
+    --para-clr: #333;
+    --btn-bg-color: #111b20;
+    --btn-text-clr: #fff;
+    --bg-clr: #fff;
+}
+
+h1 {
+    color: var(--main-heading);
+}
+
+h2 {
+    color: var(--main-heading);
+}
+
+h3 {
+    color: var(--main-heading);
+}
+
+h4 {
+    color: var(--main-heading);
+}
+
+p {
+    color: var(--para-clr);
+}
+
+a, li {
+    color: var(--btn-bg-color);
+}
+
+.btn {
+    color: var(--btn-text-clr);
+}
