@@ -60,10 +60,24 @@ const Signup = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
+                const user = {email};
+                fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
+
+
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'User created successfully',
+                    title: 'User created successfully & added to mongodb database',
                     showConfirmButton: false,
                     timer: 1500
                 })

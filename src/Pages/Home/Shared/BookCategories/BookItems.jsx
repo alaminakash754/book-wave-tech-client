@@ -1,5 +1,5 @@
 const BookItems = ({items}) => {
-    const {_id, image, book_name } = items;
+    const { image, book_name } = items;
     return (
         <div className="card  bg-base-100 shadow-xl">
             
