@@ -1,12 +1,12 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { AiFillRead } from 'react-icons/ai';
-import { BsBookmarkCheckFill } from 'react-icons/bs';
 import { useContext } from "react";
 import { BookWaveContext } from "../../Providers/UserProvider";
+import Swal from "sweetalert2";
 
 const EachBookDetails = () => {
     const books = useLoaderData();
-    const { _id, image, image1, image2, image3, image4, book_name, book_name1, book_name2, book_name3, book_name4, short_description, short_description1, short_description2, short_description3, short_description4 } = books;
+    const { _id, image, book_name, short_description, short_description1 } = books;
 
     const { user } = useContext(BookWaveContext);
 
@@ -17,12 +17,34 @@ const EachBookDetails = () => {
         const date = form.date.value;
         const email = user?.email;
         const borrowBook = {
-            name,
+            customerName: name,
             email,
+            borrowBook: book_name,
+            image,
             date,
             borrow: _id,
         }
         console.log(borrowBook)
+        fetch('http://localhost:5000/borrows', {
+            method: 'POST',
+            headers:{
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(borrowBook)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your book borrowed has been completed',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        })
     }
 
 
