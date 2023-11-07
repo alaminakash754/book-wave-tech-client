@@ -108,7 +108,7 @@ const Signup = () => {
         signWithGoogle()
             .then(result => {
                 console.log(result.user);
-                navigate('/');
+                navigate('/login');
             })
 
             .catch(error => {
@@ -117,9 +117,9 @@ const Signup = () => {
     }
 
     return (
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 items-center gap-3">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 items-center gap-3 p-4">
             <div>
-                <img className="rounded-lg" src="https://i.ibb.co/yQwv7by/loginpage.jpg" alt="" />
+                <img className="rounded-lg h-[500px] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300" src="https://i.ibb.co/yQwv7by/loginpage.jpg" alt="" />
             </div>
             <div className="hero  bg-base-200 rounded-lg">
                 <div className=" flex-col ">
@@ -160,7 +160,7 @@ const Signup = () => {
                                 </div>
                             </form>
                             <p>Already have an account? <Link to='/login'><button className="btn btn-link">Login</button></Link></p>
-                            <p className="text-center"><button onClick={handleGoogleSignIn} className="btn btn-ghost" > <FcGoogle  /></button></p>
+                            <p className="text-center"><button onClick={handleGoogleSignIn} className="btn btn-ghost" > <FcGoogle className="text-2xl" /></button></p>
                         </div>
                         {
                             signUpError && <p className="text-red-700">{signUpError}</p>

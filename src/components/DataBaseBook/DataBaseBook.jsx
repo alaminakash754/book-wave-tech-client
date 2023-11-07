@@ -2,7 +2,7 @@ import { MdUpdate } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const DataBaseBook = ({ dataBook }) => {
-    const { _id, image, image1, image2, image3, image4, book_name, book_name1, book_name2, book_name3, book_name4, author_name, author_name1, author_name2, author_name3, author_name4, category } = dataBook;
+    const { _id, image, image1, image2, book_name, book_name1, book_name2, author_name, author_name1, author_name2, category } = dataBook;
 
 
 

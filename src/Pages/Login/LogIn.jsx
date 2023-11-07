@@ -59,9 +59,9 @@ const LogIn = () => {
 
 
     return (
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 items-center gap-3">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 items-center gap-3 p-4">
             <div>
-                <img className="rounded-lg" src="https://i.ibb.co/yQwv7by/loginpage.jpg" alt="" />
+                <img className="rounded-lg h-[400px] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300" src="https://i.ibb.co/yQwv7by/loginpage.jpg" alt="" />
             </div>
             <div className="hero  bg-base-200 rounded-lg">
                 <div className=" flex-col ">
@@ -91,7 +91,7 @@ const LogIn = () => {
                             </form>
                             <p>Don't have an account? Please <Link to='/signup'><button className="btn btn-link ">Sign Up</button></Link></p>
 
-                            <p className="text-center"><button onClick={handleGoogleSignIn} className="btn btn-ghost" > <FcGoogle  /></button></p>
+                            <p className="text-center"><button onClick={handleGoogleSignIn} className="btn btn-ghost" > <FcGoogle className="text-2xl" /></button></p>
                         </div>
                         {
                             logInError && <p className="text-red-700">{logInError}</p>
