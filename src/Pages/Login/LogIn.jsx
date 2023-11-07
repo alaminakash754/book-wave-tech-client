@@ -89,7 +89,7 @@ const LogIn = () => {
                                     <button className="btn btn-primary">Login</button>
                                 </div>
                             </form>
-                            <p>New User? Please <Link to='/signup'><button className="btn btn-link ">Sign Up</button></Link></p>
+                            <p>Don't have an account? Please <Link to='/signup'><button className="btn btn-link ">Sign Up</button></Link></p>
 
                             <p className="text-center"><button onClick={handleGoogleSignIn} className="btn btn-ghost" > <FcGoogle  /></button></p>
                         </div>
