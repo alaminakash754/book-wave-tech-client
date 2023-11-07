@@ -1,10 +1,31 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { AiFillRead } from 'react-icons/ai';
 import { BsBookmarkCheckFill } from 'react-icons/bs';
+import { useContext } from "react";
+import { BookWaveContext } from "../../Providers/UserProvider";
 
 const EachBookDetails = () => {
     const books = useLoaderData();
     const { _id, image, image1, image2, image3, image4, book_name, book_name1, book_name2, book_name3, book_name4, short_description, short_description1, short_description2, short_description3, short_description4 } = books;
+
+    const { user } = useContext(BookWaveContext);
+
+    const handleBookBorrowed = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = user?.name;
+        const date = form.date.value;
+        const email = user?.email;
+        const borrowBook = {
+            name,
+            email,
+            date,
+            borrow: _id,
+        }
+        console.log(borrowBook)
+    }
+
+
     return (
         <div className="card w-3/4 mx-auto bg-blue-100 shadow-xl p-3 rounded-lg mb-3">
 
@@ -18,9 +39,43 @@ const EachBookDetails = () => {
                     <Link to={`/fullDetails/${_id}`}>
                         <button className="btn btn-primary">Read <AiFillRead /></button>
                     </Link>
-                    <Link to={`/bookBorrow/${_id}`}>
-                        <button className="btn btn-primary">Borrow <BsBookmarkCheckFill /></button>
-                    </Link>
+                    {/* The button to open modal */}
+                    <label htmlFor="my_modal_6" className="btn bg-blue-700 text-gray-100">Borrow Book</label>
+
+                    {/* Put this part before </body> tag */}
+                    <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+                    <div className="modal">
+                        <div className="modal-box">
+                            <form onSubmit={handleBookBorrowed}>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Name</span>
+                                    </label>
+                                    <input type="text" name='name' defaultValue={user?.displayName} placeholder="email" required className="input input-bordered" />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
+                                    </label>
+                                    <input type="email" name='email' defaultValue={user?.email} placeholder="email" required className="input input-bordered" />
+                                </div>
+
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Return Date</span>
+                                    </label>
+                                    <input type="date" name='date' required className="input input-bordered" />
+
+                                </div>
+                                <input type="submit" className="btn btn-primary mt-2" value="Submit" />
+
+                            </form>
+                            <div className="modal-action">
+                                <label htmlFor="my_modal_6" className="btn">Close!</label>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
