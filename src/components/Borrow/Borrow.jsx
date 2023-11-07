@@ -1,14 +1,10 @@
+const Borrow = ({ borrow, handleReturn }) => {
+    const { _id, borrowBook, email, date, image } = borrow;
 
-
-const Borrow = ({ borrow }) => {
-    const { borrowBook, email, date, image } = borrow;
-
-    const handleReturn = id => {
-        
-    }
+    
     return (
         <tr>
-            
+
             <td>
 
                 <div className="avatar">
@@ -25,7 +21,7 @@ const Borrow = ({ borrow }) => {
             <td>{email}</td>
             <td>{date}</td>
             <th>
-                <button className="btn btn-ghost bg-blue-600">Return Book</button>
+                <button onClick={() => handleReturn(_id)} className="btn btn-ghost bg-blue-600">Return Book</button>
             </th>
         </tr>
     );
