@@ -17,6 +17,8 @@ const Navbar = () => {
         const localTheme = localStorage.getItem('theme');
         document.querySelector('html').setAttribute('data-theme', localTheme);
     },[theme]);
+
+
     const { user, logOut } = useContext(BookWaveContext);
 
     const handleSignOut = () => {
@@ -29,35 +31,26 @@ const Navbar = () => {
             })
     }
 
-    // const [theme, setTheme] = useState('light');
-
-    // const toggleTheme = () => {
-    //     theme == 'dark' ? setTheme('light') : setTheme('dark');
-    // };
-
-    // useEffect(() => {
-    //     document.body.className = theme;
-    // }, [theme]);
 
     const navLinks = <>
         <li><NavLink to="/"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-[#252424] font-bold text-lg hover:bg-red-500 underline" : ""
+                isPending ? "pending" : isActive ? " font-bold text-lg hover:bg-blue-500 underline" : ""
             }>Home</NavLink></li>
         <li><NavLink to="/addBook"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-[#252424] font-bold  text-lg hover:bg-red-500  underline" : ""
+                isPending ? "pending" : isActive ? " font-bold  text-lg hover:bg-blue-500  underline" : ""
             }>Add Book</NavLink></li>
 
 
         <li><NavLink to="/allBooks"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-[#252424] text-lg hover:bg-red-500 font-bold underline" : ""
+                isPending ? "pending" : isActive ? " text-lg hover:bg-blue-500 font-bold underline" : ""
             }>All Books</NavLink></li>
 
         <li><NavLink to="/borrowBooks"
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "text-[#252424] text-lg hover:bg-red-500 font-bold underline" : ""
+                isPending ? "pending" : isActive ? " text-lg hover:bg-blue-500 font-bold underline" : ""
             }>Borrowed
             Books</NavLink></li>
 
@@ -67,7 +60,7 @@ const Navbar = () => {
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rounded-2xl" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu gap-1 menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         {navLinks}

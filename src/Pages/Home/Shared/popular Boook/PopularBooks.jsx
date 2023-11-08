@@ -7,7 +7,7 @@ const PopularBooks = () => {
                 <h1 className="text-center text-3xl text-gray-500 font-bold">Most Popular Books</h1>
                 <p className="text-center text-gray-400 font-medium">The Most Popular Books Today are available in Book Wave Teach</p>
             </div>
-            <div className='mt-10 grid grid-cols-3 gap-5 mx-auto  items-center justify-center'>
+            <div className='mt-10 grid grid-cols-2 gap-5 mx-auto  items-center justify-center'>
                     <div className=' text-center'>
                         <progress className="progress w-56 text-blue-500 bg-blue-500 mt-4 mb-5"></progress>
                     </div>

@@ -6,7 +6,7 @@ const Blog = () => {
                 <div className="text-center mb-10">
                     <h1 className="text-center text-3xl text-gray-500 font-bold">Latest Blog Post</h1>
                 </div>
-                <div className='mt-10 grid grid-cols-3 gap-5 items-center justify-center mx-auto mb-10'>
+                <div className='mt-10 grid grid-cols-2 gap-5 items-center justify-center mx-auto mb-10'>
                     <div className=' text-center'>
                         <progress className="progress w-56 text-blue-500 bg-blue-500 mt-4 mb-5"></progress>
                     </div>
