@@ -23,22 +23,22 @@ const router = createBrowserRouter([
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:5000/book')
+            loader: () => fetch('https://book-wave-server.vercel.app/book')
         },
         {
           path:'/details/:id',
           element: <BooksDetails></BooksDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+          loader: ({params}) => fetch(`https://book-wave-server.vercel.app/book/${params.id}`)
         },
         {
           path:'/eachBook/:id',
           element:<PrivateRoute><EachBookDetails></EachBookDetails></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+          loader: ({params}) => fetch(`https://book-wave-server.vercel.app/book/${params.id}`)
         },
         {
           path: '/fullDetails/:id',
           element: <FullDetails></FullDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+          loader: ({params}) => fetch(`https://book-wave-server.vercel.app/book/${params.id}`)
         },
         {
             path: '/login',
@@ -55,12 +55,12 @@ const router = createBrowserRouter([
         {
           path: '/allBooks',
           element: <PrivateRoute><AllBooks></AllBooks></PrivateRoute>,
-          loader: () => fetch('http://localhost:5000/userBook')
+          loader: () => fetch('https://book-wave-server.vercel.app/userBook')
         },
         {
           path: '/updateBook/:id',
           element: <UpdateBook></UpdateBook>,
-          loader: ({params}) => fetch(`http://localhost:5000/userBook/${params.id}`)
+          loader: ({params}) => fetch(`https://book-wave-server.vercel.app/userBook/${params.id}`)
         },
         {
           path: '/borrowBooks',

@@ -25,7 +25,7 @@ const EachBookDetails = () => {
             borrow: _id,
         }
         console.log(borrowBook)
-        fetch('http://localhost:5000/borrows', {
+        fetch('https://book-wave-server.vercel.app/borrows', {
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'

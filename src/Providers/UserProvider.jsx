@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import axios from "axios";
 
 export const BookWaveContext = createContext(null);
 const googleProvider = new GoogleAuthProvider()
@@ -32,8 +33,23 @@ const UserProvider = ({children}) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = {email: userEmail}
             setUser(currentUser);
             setLoading(false);
+            if(currentUser){ 
+                axios.post('https://book-wave-server.vercel.app/jwt', loggedUser, {withCredentials: true})
+                .then(res => {
+                    console.log('token access', res.data)
+                })
+            }
+            else{
+                axios.post('https://book-wave-server.vercel.app/logout', loggedUser, {withCredentials: true})
+                .then(res => {
+                    console.log(res.data)
+                })
+            }
+            
         });
         return () => {
             unSubscribe();

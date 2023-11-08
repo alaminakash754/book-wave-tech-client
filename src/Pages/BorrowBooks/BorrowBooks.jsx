@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const BorrowBooks = () => {
     const { user } = useContext(BookWaveContext);
     const [borrows, setBorrows] = useState([]);
-    const url = `http://localhost:5000/borrows?email=${user?.email}`
+    const url = `https://book-wave-server.vercel.app/borrows?email=${user?.email}`
 
     useEffect(() => {
         fetch(url)
@@ -27,7 +27,7 @@ const BorrowBooks = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/borrows/${id}`, {
+                fetch(`https://book-wave-server.vercel.app/borrows/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

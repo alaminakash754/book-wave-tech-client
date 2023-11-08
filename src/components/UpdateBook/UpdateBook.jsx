@@ -18,7 +18,7 @@ const UpdateBook = () => {
         const updateBook = { select, image, name, quantity, author, description, rating }
         console.log(updateBook);
 
-        fetch(`http://localhost:5000/userBook/${_id}`, {
+        fetch(`https://book-wave-server.vercel.app/userBook/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

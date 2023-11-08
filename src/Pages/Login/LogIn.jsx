@@ -1,14 +1,16 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BookWaveContext } from "../../Providers/UserProvider";
 import Swal from 'sweetalert2'
 import { FcGoogle } from 'react-icons/fc';
+import axios from "axios";
 
 
 const LogIn = () => {
 
     const [logInError, setLogInError] = useState('');
     const [successLogin, setSuccessLogin] = useState('')
+    const location = useLocation();
 
     const { signInUser, signWithGoogle } = useContext(BookWaveContext);
     const navigate = useNavigate();
@@ -24,6 +26,18 @@ const LogIn = () => {
 
         signInUser(email, password)
             .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser);
+                const user = { email };
+
+                // get access token
+                axios.post('https://book-wave-server.vercel.app/jwt', user)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.success) {
+                            navigate(location?.state ? location?.state : '/')
+                        }
+                    })
                 console.log(result.user);
                 e.target.reset();
                 setSuccessLogin(Swal.fire({
@@ -89,7 +103,7 @@ const LogIn = () => {
                                     <button className="btn btn-primary">Login</button>
                                 </div>
                             </form>
-                            <p>Don't have an account? Please <Link to='/signup'><button className="btn btn-link ">Sign Up</button></Link></p>
+                            <p>Do not have an account? Please <Link to='/signup'><button className="btn btn-link ">Sign Up</button></Link></p>
 
                             <p className="text-center"><button onClick={handleGoogleSignIn} className="btn btn-ghost" > <FcGoogle className="text-2xl" /></button></p>
                         </div>

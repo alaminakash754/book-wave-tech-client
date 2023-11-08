@@ -10,9 +10,11 @@ const AllBooks = () => {
     const [dataBooks, setDataBooks] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/book')
+        fetch('https://book-wave-server.vercel.app/book', {credentials: 'include'})
             .then(res => res.json())
-            .then(data => setDataBooks(data))
+            .then(data => {
+                setDataBooks(data)
+            })
     }, []);
 
 

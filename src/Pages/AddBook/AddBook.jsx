@@ -14,7 +14,7 @@ const AddBook = () => {
         const newBook = { select, image, name, quantity, author, description, rating }
         console.log(newBook);
 
-        fetch('http://localhost:5000/userBook', {
+        fetch('https://book-wave-server.vercel.app/userBook', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
